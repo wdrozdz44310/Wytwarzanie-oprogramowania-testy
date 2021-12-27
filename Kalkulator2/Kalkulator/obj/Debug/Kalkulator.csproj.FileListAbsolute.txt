@@ -1,0 +1,9 @@
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\bin\Debug\Kalkulator.exe.config
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\bin\Debug\Kalkulator.exe
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\bin\Debug\Kalkulator.pdb
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\obj\Debug\Kalkulator.csproj.AssemblyReference.cache
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\obj\Debug\Kalkulator.Properties.Resources.resources
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\obj\Debug\Kalkulator.csproj.GenerateResource.cache
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\obj\Debug\Kalkulator.csproj.CoreCompileInputs.cache
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\obj\Debug\Kalkulator.exe
+D:\Studia\Wytwarzanie oprogramowania\testy\Kalkulator2\Kalkulator\obj\Debug\Kalkulator.pdb
