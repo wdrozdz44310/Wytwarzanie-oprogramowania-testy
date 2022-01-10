@@ -9,6 +9,9 @@ namespace Kalkulator
     public enum CalcSystem
     {
         SystemHex,
-        SystemDec
+        SystemDec,
+        SystemBin,
     }
+
+
 }

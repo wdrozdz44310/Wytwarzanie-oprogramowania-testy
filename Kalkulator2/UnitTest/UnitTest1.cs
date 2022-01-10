@@ -12,6 +12,8 @@ namespace UnitTest
         public void TestKalkValueInit()
         {
             var calc = new Kalkulator.Calc();
+            calc.CalcValue = "0";
+
 
             Assert.AreEqual("0", calc.CalcValue);
         }
@@ -35,6 +37,9 @@ namespace UnitTest
         public void TestKalkQwordType()
         {
             var calc = new Kalkulator.Calc();
+            calc.CalcTyp = Kalkulator.CalcTyp.TypQword;
+            calc.ConvertSystem();
+
             Assert.AreEqual(Kalkulator.CalcTyp.TypQword, calc.CalcTyp);
         }
 
@@ -43,9 +48,15 @@ namespace UnitTest
         public void TestKalkBinType()
         {
             var calc = new Kalkulator.Calc();
-            Assert.AreEqual(calc.CalcBinValue, "0000000000000000000000000000000000000000000000000000000000000000");
-        }
+            calc.CalcTyp = Kalkulator.CalcTyp.TypQword;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
+            calc.CalcValue = "0";
+            calc.ConvertSystem();
+            calc.ConvertTyp();
 
+            Assert.AreEqual(64, calc.CalcValue.Length);
+            Assert.AreEqual(calc.CalcValue, "0000000000000000000000000000000000000000000000000000000000000000");
+        }
 
     }
 }
