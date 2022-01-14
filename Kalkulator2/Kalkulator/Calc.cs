@@ -30,7 +30,6 @@ namespace Kalkulator
             {
                 CalcValue = CalcValue.Remove(0, 1);
             }
-
         }
 
 
@@ -40,13 +39,74 @@ namespace Kalkulator
             switch (CalcSystem)
             {
                 case CalcSystem.SystemDec:
-                    CalcValue = Convert.ToString(Convert.ToInt64(CalcValue, 10));
+                    if (CalcTyp == CalcTyp.TypWord)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt16(CalcValue), 10);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypDword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt32(CalcValue), 10);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypQword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt64(CalcValue), 10);
+                        break;
+                    }
                     break;
                 case CalcSystem.SystemHex:
-                    CalcValue = Convert.ToString(Convert.ToInt64(CalcValue, 16));
+                    if (CalcTyp == CalcTyp.TypWord)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt16(CalcValue), 16);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypDword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt32(CalcValue), 16);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypQword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt64(CalcValue), 16);
+                        break;
+                    }
                     break;
                 case CalcSystem.SystemBin:
-                    CalcValue = Convert.ToString(Convert.ToInt64(CalcValue, 2));
+                    if (CalcTyp == CalcTyp.TypWord)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt16(CalcValue), 2);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypDword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt32(CalcValue), 2);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypQword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt64(CalcValue), 2);
+                        break;
+                    }
+                    break;
+                case CalcSystem.SystemOct:
+                    if (CalcTyp == CalcTyp.TypWord)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt16(CalcValue), 8);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypDword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt32(CalcValue), 8);
+                        break;
+                    }
+                    else if (CalcTyp == CalcTyp.TypQword)
+                    {
+                        CalcValue = Convert.ToString(Convert.ToInt64(CalcValue), 8);
+                        break;
+                    }
+                    break;
+                default:
                     break;
             }
         }
@@ -65,6 +125,7 @@ namespace Kalkulator
                 case CalcTyp.TypWord:
                     CalcValue = CalcValue.PadLeft(16, '0');
                     break;
+
             }
         }
     }

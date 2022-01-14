@@ -11,14 +11,17 @@ namespace UnitTest
         public void TestKalkValueOnes()
         {
             var calc = new Kalkulator.Calc();
-            calc.CalcTyp = Kalkulator.CalcTyp.TypQword;
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.CalcValue = "1";
+            calc.SignValidation();
             calc.ConvertSystem();
+            calc.ConvertTyp();
+
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
-            Assert.AreEqual(Kalkulator.CalcTyp.TypQword, calc.CalcTyp);
-            Assert.AreEqual("1", calc.CalcValue);
+            Assert.AreEqual(Kalkulator.CalcTyp.TypWord, calc.CalcTyp);
+            Assert.AreEqual("0000000000000001", calc.CalcValue);
         }
 
         // Testy czy metoda do wprowadzania danych przyjmuje znak ”0”-> {q0, 0ww, 00, w0e0}
@@ -26,13 +29,17 @@ namespace UnitTest
         public void TestKalkValueZeros()
         {
             var calc = new Kalkulator.Calc();
-            calc.CalcTyp = Kalkulator.CalcTyp.TypQword;
-            calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.CalcValue = "0";
+            calc.SignValidation();
             calc.ConvertSystem();
+            calc.ConvertTyp();
+
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
-            Assert.AreEqual("0", calc.CalcValue);
+            Assert.AreEqual(Kalkulator.CalcTyp.TypWord, calc.CalcTyp);
+            Assert.AreEqual("0000000000000000", calc.CalcValue);
         }
 
         //Testy czy metoda do wprowadzania danych przyjmuje znak ”+” -> {+, 01+10, 0w1+e1q0}
@@ -40,8 +47,16 @@ namespace UnitTest
         public void TestKalkValuePlus()
         {
             var calc = new Kalkulator.Calc();
+            calc.CalcValue = "+1";
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
+            calc.SignValidation();
+            calc.ConvertSystem();
+            calc.ConvertTyp();
+
+
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
-            Assert.AreEqual("+", calc.CalcValue);
+            Assert.AreEqual("0000000000000001", calc.CalcValue);
         }
 
         //Testy czy metoda do wprowadzania danych przyjmuje znak ”-” -> {-, 01-10, 0w1-e1q0}
@@ -49,8 +64,15 @@ namespace UnitTest
         public void TestKalkValueMinus()
         {
             var calc = new Kalkulator.Calc();
+            calc.CalcValue = "-1";
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
+            calc.SignValidation();
+            calc.ConvertSystem();
+            calc.ConvertTyp();
+
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
-            Assert.AreEqual("-", calc.CalcValue);
+            Assert.AreEqual("1111111111111111", calc.CalcValue);
         }
     }
 }
