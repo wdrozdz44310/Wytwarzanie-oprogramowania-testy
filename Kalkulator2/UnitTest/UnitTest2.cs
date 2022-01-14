@@ -31,9 +31,9 @@ namespace UnitTest
             calc.CalcValue = "0";
             calc.ConvertSystem();
 
-            SystemHex Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
+            Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
             Assert.AreEqual("0", calc.CalcValue);
-            SystemHex        }
+        }
 
         //Testy czy metoda do wprowadzania danych przyjmuje znak ”+” -> {+, 01+10, 0w1+e1q0}
         [TestMethod]

@@ -11,6 +11,7 @@ namespace Kalkulator
         SystemHex,
         SystemDec,
         SystemBin,
+        SystemOct
     }
 
 
