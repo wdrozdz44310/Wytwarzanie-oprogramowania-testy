@@ -5,7 +5,7 @@ namespace UnitTest
 {
     // Testy inicjacji klasy
     [TestClass]
-    public class ClassInitTests
+    public class ClassInitTest
     {
         // Test wartości domyślnej kalkulatora. Sprawdzenie czy metoda zwracająca bieżącą wartość kalkulatora zwraca wartość ”0”.
         [TestMethod]
