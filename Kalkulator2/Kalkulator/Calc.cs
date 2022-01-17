@@ -24,12 +24,44 @@ namespace Kalkulator
             CalcTyp = CalcTyp.TypQword;
         }
 
+        // to do ...
         public void SignValidation()
         {
-            if (CalcValue.StartsWith("+"))
+            switch (CalcSystem)
+            {
+                case CalcSystem.SystemHex:
+
+                case CalcSystem.SystemDec:
+
+                case CalcSystem.SystemOct:
+
+                case CalcSystem.SystemBin:
+            }
+
+
+            if (CalcValue.StartsWith("+")  &
+                CalcValue.StartsWith("-")  &
+                CalcValue.StartsWith("=")) &
+                CalcValue.StartsWith("*")) & 
+                CalcValue.StartsWith("/")) &
+                CalcValue.StartsWith("(")) &
+                CalcValue.StartsWith(")")) &
             {
                 CalcValue = CalcValue.Remove(0, 1);
             }
+
+            string numStr = "";
+            CalcValue.ToUpper();
+            foreach(char c in CalcValue)
+            {
+              if(c > '0' &&  c <= '9' || 
+                 c >='A' &&  c <= 'F' ||
+                 c == '-' || c == '+' ||
+                 c == '*' || c )= '/' ||
+                 c == '(' || c )= ')' ||  
+              numStr = string.Concat(numericString, c);
+            }
+            CalcValue = numStr
         }
 
 

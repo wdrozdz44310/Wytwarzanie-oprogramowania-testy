@@ -74,5 +74,35 @@ namespace UnitTest
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
             Assert.AreEqual("1111111111111111", calc.CalcValue);
         }
+
+        [TestMethod]
+        public void TestKalkValueIgnoreForbiddenNumbers()
+        {
+            var calc = new Kalkulator.Calc();
+            calc.CalcValue = "1021354109178"; //101101
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
+            calc.SignValidation();
+            calc.ConvertSystem();
+            calc.ConvertTyp();
+
+            Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
+            Assert.AreEqual("0000000000101101", calc.CalcValue);
+        }
+
+        [TestMethod]
+        public void TestKalkValueIgnoreLetters()
+        {
+            var calc = new Kalkulator.Calc();
+            calc.CalcValue = "10A1BCD10E1FGHJ"; //101101
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
+            calc.SignValidation();
+            calc.ConvertSystem();
+            calc.ConvertTyp();
+
+            Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
+            Assert.AreEqual("0000000000101101", calc.CalcValue);
+        }
     }
 }
