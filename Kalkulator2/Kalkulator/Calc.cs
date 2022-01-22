@@ -4,7 +4,7 @@ namespace Kalkulator
 {
     public class Calc
     {
-        private string calcValue, calcBinValue;
+        private string calcValue;
 
         public string CalcValue
         {
@@ -27,45 +27,62 @@ namespace Kalkulator
         // to do ...
         public void SignValidation()
         {
-            // switch (CalcSystem)
-            // {
-            //     case CalcSystem.SystemHex:
-
-            //     case CalcSystem.SystemDec:
-
-            //     case CalcSystem.SystemOct:
-
-            //     case CalcSystem.SystemBin:
-            //         break;
-            // }
-
-
-            if (CalcValue.StartsWith("+") &
-                CalcValue.StartsWith("-") &
-                CalcValue.StartsWith("=") &
-                CalcValue.StartsWith("*") &
-                CalcValue.StartsWith("/") &
-                CalcValue.StartsWith("(") &
+            // sign validation for difrent number system
+            if (CalcValue.StartsWith("+") ||
+                CalcValue.StartsWith("=") ||
+                CalcValue.StartsWith("*") ||
+                CalcValue.StartsWith("/") ||
+                CalcValue.StartsWith("(") ||
                 CalcValue.StartsWith(")"))
             {
                 CalcValue = CalcValue.Remove(0, 1);
             }
 
-            string numStr = "";
-            CalcValue.ToUpper();
-            foreach (char c in CalcValue)
+            switch (CalcSystem)
             {
-                if (c >= '0' && c <= '9' ||
-                    c >= 'A' && c <= 'F' ||
-                    c == '-' || c == '+' ||
-                    c == '*' || c == '/' ||
-                    c == '(' || c == ')'
-                    )
-                {
-                    numStr = string.Concat(numStr, c);
-                }
+                case CalcSystem.SystemHex:
+                    CalcValue = CalcValue.ToUpper();
+                    foreach (char c in CalcValue)
+                    {
+                        if (!(c >= '0' && c <= '9') && !(c >= 'A' && c <= 'F'))
+                        {
+                            CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
+                        }
+
+                    }
+                    break;
+                case CalcSystem.SystemDec:
+                    foreach (char c in CalcValue)
+                    {
+                        if (!(c >= '0' && c <= '9'))
+                        {
+                            CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
+                        }
+
+                    }
+                    break;
+                case CalcSystem.SystemBin:
+                    foreach (char c in CalcValue)
+                    {
+                        if (!(c >= '0' && c <= '1'))
+                        {
+                            CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
+                        }
+
+                    }
+                    break;
+                case CalcSystem.SystemOct:
+                    foreach (char c in CalcValue)
+                    {
+                        if (!(c >= '0' && c <= '7'))
+                        {
+                            CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
+                        }
+
+                    }
+                    break;
             }
-            CalcValue = numStr;
+
         }
 
 
@@ -160,6 +177,8 @@ namespace Kalkulator
                     break;
                 case CalcTyp.TypWord:
                     CalcValue = CalcValue.PadLeft(16, '0');
+                    break;
+                default:
                     break;
 
             }
