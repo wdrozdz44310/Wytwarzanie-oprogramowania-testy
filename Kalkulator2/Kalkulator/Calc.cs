@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 
 namespace Kalkulator
 {
@@ -27,7 +29,6 @@ namespace Kalkulator
         // to do ...
         public void SignValidation()
         {
-            // sign validation for difrent number system
             if (CalcValue.StartsWith("+") ||
                 CalcValue.StartsWith("=") ||
                 CalcValue.StartsWith("*") ||
@@ -44,7 +45,7 @@ namespace Kalkulator
                     CalcValue = CalcValue.ToUpper();
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '9') && !(c >= 'A' && c <= 'F'))
+                        if (!(c >= '0' && c <= '9') && !(c >= 'A' && c <= 'F') && (c != '-'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -54,7 +55,7 @@ namespace Kalkulator
                 case CalcSystem.SystemDec:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '9'))
+                        if (!(c >= '0' && c <= '9')&& (c != '-'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -64,7 +65,7 @@ namespace Kalkulator
                 case CalcSystem.SystemBin:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '1'))
+                        if (!(c >= '0' && c <= '1')&& (c != '-'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -74,7 +75,7 @@ namespace Kalkulator
                 case CalcSystem.SystemOct:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '7'))
+                        if (!(c >= '0' && c <= '7')&& (c != '-'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -111,17 +112,18 @@ namespace Kalkulator
                 case CalcSystem.SystemHex:
                     if (CalcTyp == CalcTyp.TypWord)
                     {
-                        CalcValue = Convert.ToString(Convert.ToInt16(CalcValue), 16);
+                        // CalcValue = Convert.ToString(Convert.ToInt16(CalcValue), 16);
+                        CalcValue = CalcValue;
                         break;
                     }
                     else if (CalcTyp == CalcTyp.TypDword)
                     {
-                        CalcValue = Convert.ToString(Convert.ToInt32(CalcValue), 16);
+                        CalcValue = CalcValue;
                         break;
                     }
                     else if (CalcTyp == CalcTyp.TypQword)
                     {
-                        CalcValue = Convert.ToString(Convert.ToInt64(CalcValue), 16);
+                        CalcValue = CalcValue;
                         break;
                     }
                     break;

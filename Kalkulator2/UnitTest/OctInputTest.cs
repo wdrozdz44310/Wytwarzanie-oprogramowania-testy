@@ -68,10 +68,11 @@ namespace UnitTest
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
             calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
             calc.SignValidation();
-            calc.ConvertSystem();
+            //calc.ConvertSystem();
             calc.ConvertTyp();
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
+            Assert.AreEqual(Kalkulator.CalcTyp.TypWord, calc.CalcTyp);
             Assert.AreEqual("0000000000177777", calc.CalcValue);
         }
 
@@ -191,26 +192,26 @@ namespace UnitTest
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
             calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
             calc.SignValidation();
-            calc.ConvertSystem();
+            // calc.ConvertSystem();
             calc.ConvertTyp();
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
-            Assert.AreEqual("0000001021351091", calc.CalcValue);
+            Assert.AreEqual("0000010213541017", calc.CalcValue);
         }
 
         [TestMethod]
         public void TestKalkValueIgnoreLetters()
         {
             var calc = new Kalkulator.Calc();
-            calc.CalcValue = "10A213D541CF09R1"; //1021351091
+            calc.CalcValue = "10A213D541CF09R1"; //1021354101
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
             calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
             calc.SignValidation();
-            calc.ConvertSystem();
+            // calc.ConvertSystem();
             calc.ConvertTyp();
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
-            Assert.AreEqual("0000001021351091", calc.CalcValue);
+            Assert.AreEqual("0000001021354101", calc.CalcValue);
         }
     }
 }

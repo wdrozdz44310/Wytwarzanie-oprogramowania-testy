@@ -196,5 +196,21 @@ namespace UnitTest
             Assert.AreEqual(Kalkulator.CalcSystem.SystemDec, calc.CalcSystem);
             Assert.AreEqual("0000000000000001", calc.CalcValue);
         }
+
+        [TestMethod]
+        public void TestKalkValueMinus()
+        {
+            var calc = new Kalkulator.Calc();
+            calc.CalcValue = "-1";
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemDec;
+            calc.SignValidation();
+            //calc.ConvertSystem();
+            calc.ConvertTyp();
+
+            Assert.AreEqual(Kalkulator.CalcSystem.SystemDec, calc.CalcSystem);
+            Assert.AreEqual(Kalkulator.CalcTyp.TypWord, calc.CalcTyp);
+            Assert.AreEqual("-1", calc.CalcValue);
+        }
     }
 }

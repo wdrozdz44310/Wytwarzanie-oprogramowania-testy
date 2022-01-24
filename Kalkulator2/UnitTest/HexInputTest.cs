@@ -198,6 +198,7 @@ namespace UnitTest
             Assert.AreEqual("00000000000000BB", calc.CalcValue);
         }
 
+        [TestMethod]
         public void TestKalkValueC()
         {
             var calc = new Kalkulator.Calc();
@@ -214,6 +215,7 @@ namespace UnitTest
             Assert.AreEqual("00000000000000CC", calc.CalcValue);
         }
 
+        [TestMethod]
         public void TestKalkValueD()
         {
             var calc = new Kalkulator.Calc();
@@ -230,6 +232,7 @@ namespace UnitTest
             Assert.AreEqual("00000000000000DD", calc.CalcValue);
         }
 
+        [TestMethod]
         public void TestKalkValueE()
         {
             var calc = new Kalkulator.Calc();
@@ -246,6 +249,7 @@ namespace UnitTest
             Assert.AreEqual("00000000000000EE", calc.CalcValue);
         }
 
+        [TestMethod]
         public void TestKalkValueF()
         {
             var calc = new Kalkulator.Calc();
@@ -268,14 +272,29 @@ namespace UnitTest
             var calc = new Kalkulator.Calc();
             calc.CalcValue = "ALB1RY2IF"; //AB12F
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
-            calc.CalcSystem = Kalkulator.CalcSystem.SystemDec;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
             calc.SignValidation();
             calc.ConvertSystem();
             calc.ConvertTyp();
 
-
-            Assert.AreEqual(Kalkulator.CalcSystem.SystemDec, calc.CalcSystem);
+            Assert.AreEqual(Kalkulator.CalcSystem.SystemHex, calc.CalcSystem);
             Assert.AreEqual("00000000000AB12F", calc.CalcValue);
+        }
+
+        [TestMethod]
+        public void TestKalkValueMinus()
+        {
+            var calc = new Kalkulator.Calc();
+            calc.CalcValue = "-1";
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
+            calc.SignValidation();
+            //calc.ConvertSystem();
+            calc.ConvertTyp();
+
+            Assert.AreEqual(Kalkulator.CalcSystem.SystemHex, calc.CalcSystem);
+            Assert.AreEqual(Kalkulator.CalcTyp.TypWord, calc.CalcTyp);
+            Assert.AreEqual("FFFF", calc.CalcValue);
         }
     }
 }

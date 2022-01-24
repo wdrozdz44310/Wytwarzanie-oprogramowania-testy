@@ -83,7 +83,7 @@ namespace UnitTest
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.SignValidation();
-            calc.ConvertSystem();
+            // calc.ConvertSystem();
             calc.ConvertTyp();
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
@@ -98,7 +98,7 @@ namespace UnitTest
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.SignValidation();
-            calc.ConvertSystem();
+            // calc.ConvertSystem();
             calc.ConvertTyp();
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
