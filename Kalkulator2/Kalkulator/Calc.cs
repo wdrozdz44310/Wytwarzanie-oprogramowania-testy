@@ -1,8 +1,8 @@
 ﻿using System;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Text;
-using System.Data;
 
 namespace Kalkulator
 {
@@ -31,7 +31,7 @@ namespace Kalkulator
             set { outputCalcValue = value; }
         }
 
-         public string[] ParsedValues
+        public string[] ParsedValues
         {
             get { return parsedValues; }
             set { parsedValues = value; }
@@ -45,7 +45,7 @@ namespace Kalkulator
             CalcValue = "0";
             CalcSystem = CalcSystem.SystemDec;
             CalcTyp = CalcTyp.TypQword;
-            OutputCalcValue= "0";
+            OutputCalcValue = "0";
             for (int i = 0; i < 64; i++)
                 BinOutput += "0";
         }
@@ -53,7 +53,7 @@ namespace Kalkulator
 
 
         // dzeli wyrażenie np. 2+4 na "2" "+" "4"
-        public void ParseValues() 
+        public void ParseValues()
         {
 
             parsedValues[0] = "";
@@ -61,7 +61,7 @@ namespace Kalkulator
             parsedValues[2] = "";
 
             int signIndex = 0;
-            for(int i = 0; (i==0 && CalcValue[i] == '-') || (CalcValue[i] != '+' && CalcValue[i] != '-' && CalcValue[i] != '*' && CalcValue[i] != '/'); i++)
+            for (int i = 0; (i == 0 && CalcValue[i] == '-') || (CalcValue[i] != '+' && CalcValue[i] != '-' && CalcValue[i] != '*' && CalcValue[i] != '/'); i++)
             {
                 parsedValues[0] += CalcValue[i];
                 signIndex++;
@@ -110,7 +110,8 @@ namespace Kalkulator
             else
                 result = 0;
 
-            OutputCalcValue = ConvertOutputSystem(oldSystem, result);
+            OutputCalcValue = ConvertOutputSystem(oldSystem, result).ToUpper();
+            ConvertTyp();
         }
 
         // Convert.ToString(Convert.ToInt64(text, oldType), 2);
@@ -126,7 +127,7 @@ namespace Kalkulator
                 CalcValue.StartsWith("(") ||
                 CalcValue.StartsWith(")"))
             {
-                CalcValue = CalcValue.Remove(0, 1);;
+                CalcValue = CalcValue.Remove(0, 1); ;
             }
         }
 
@@ -148,7 +149,7 @@ namespace Kalkulator
                 case CalcSystem.SystemDec:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '9')&& (c != '-'))
+                        if (!(c >= '0' && c <= '9') && (c != '-'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -158,7 +159,7 @@ namespace Kalkulator
                 case CalcSystem.SystemBin:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '1')&& (c != '-'))
+                        if (!(c >= '0' && c <= '1') && (c != '-'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -168,7 +169,7 @@ namespace Kalkulator
                 case CalcSystem.SystemOct:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '7')&& (c != '-'))
+                        if (!(c >= '0' && c <= '7') && (c != '-'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -191,7 +192,8 @@ namespace Kalkulator
         }
 
         public string ConvertOutputSystem(int oldSystem, int result)
-        {   string output = result.ToString();
+        {
+            string output = result.ToString();
             if (CalcSystem != CalcSystem.SystemDec)
                 output = Convert.ToString(Convert.ToInt64(result.ToString(), 10), oldSystem);
             return output;
@@ -202,15 +204,16 @@ namespace Kalkulator
             switch (CalcTyp)
             {
                 case CalcTyp.TypQword:
-                    // CalcValue = CalcValue.PadLeft(64, '0');
+                    // OutputCalcValue = OutputCalcValue.PadLeft(64);
                     break;
                 case CalcTyp.TypDword:
-                    // CalcValue = CalcValue.PadLeft(32, '0');
+                    // OutputCalcValue = OutputCalcValue.PadLeft(32);
                     break;
                 case CalcTyp.TypWord:
-                    // CalcValue = CalcValue.PadLeft(16, '0');
+                    // OutputCalcValue = OutputCalcValue.PadLeft(16);
                     break;
                 case CalcTyp.TypByte:
+                    // OutputCalcValue = OutputCalcValue.PadLeft(8);
                     break;
                 default:
                     break;

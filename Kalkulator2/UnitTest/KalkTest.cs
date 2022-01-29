@@ -1,5 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace UnitTest
 {
@@ -15,9 +15,9 @@ namespace UnitTest
             calc.CalcValue = "2+4";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("2",calc.ParsedValues[0]);
-            Assert.AreEqual("+",calc.ParsedValues[1]);
-            Assert.AreEqual("4",calc.ParsedValues[2]);
+            Assert.AreEqual("2", calc.ParsedValues[0]);
+            Assert.AreEqual("+", calc.ParsedValues[1]);
+            Assert.AreEqual("4", calc.ParsedValues[2]);
         }
 
         [TestMethod]
@@ -29,9 +29,9 @@ namespace UnitTest
             calc.CalcValue = "2-4";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("2",calc.ParsedValues[0]);
-            Assert.AreEqual("-",calc.ParsedValues[1]);
-            Assert.AreEqual( "4",calc.ParsedValues[2]);
+            Assert.AreEqual("2", calc.ParsedValues[0]);
+            Assert.AreEqual("-", calc.ParsedValues[1]);
+            Assert.AreEqual("4", calc.ParsedValues[2]);
         }
 
         [TestMethod]
@@ -43,11 +43,11 @@ namespace UnitTest
             calc.CalcValue = "20+40";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("20",calc.ParsedValues[0]);
-            Assert.AreEqual("+",calc.ParsedValues[1]);
-            Assert.AreEqual("40",calc.ParsedValues[2]);
+            Assert.AreEqual("20", calc.ParsedValues[0]);
+            Assert.AreEqual("+", calc.ParsedValues[1]);
+            Assert.AreEqual("40", calc.ParsedValues[2]);
         }
-           [TestMethod]
+        [TestMethod]
         public void TestParseValuesDivideSign()
         {
             var calc = new Kalkulator.Calc();
@@ -56,11 +56,11 @@ namespace UnitTest
             calc.CalcValue = "20/40";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("20",calc.ParsedValues[0]);
-            Assert.AreEqual("/",calc.ParsedValues[1]);
-            Assert.AreEqual("40",calc.ParsedValues[2]);
+            Assert.AreEqual("20", calc.ParsedValues[0]);
+            Assert.AreEqual("/", calc.ParsedValues[1]);
+            Assert.AreEqual("40", calc.ParsedValues[2]);
         }
-           [TestMethod]
+        [TestMethod]
         public void TestParseValuesMultiplySign()
         {
             var calc = new Kalkulator.Calc();
@@ -69,9 +69,9 @@ namespace UnitTest
             calc.CalcValue = "20*40";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("20",calc.ParsedValues[0]);
-            Assert.AreEqual("*",calc.ParsedValues[1]);
-            Assert.AreEqual("40",calc.ParsedValues[2]);
+            Assert.AreEqual("20", calc.ParsedValues[0]);
+            Assert.AreEqual("*", calc.ParsedValues[1]);
+            Assert.AreEqual("40", calc.ParsedValues[2]);
         }
 
         [TestMethod]
@@ -83,11 +83,11 @@ namespace UnitTest
             calc.CalcValue = "-20*40";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("-20",calc.ParsedValues[0]);
-            Assert.AreEqual("*",calc.ParsedValues[1]);
-            Assert.AreEqual("40",calc.ParsedValues[2]);
+            Assert.AreEqual("-20", calc.ParsedValues[0]);
+            Assert.AreEqual("*", calc.ParsedValues[1]);
+            Assert.AreEqual("40", calc.ParsedValues[2]);
         }
-        
+
         [TestMethod]
         public void TestParseValuesHexMinusMultiplySign()
         {
@@ -97,9 +97,9 @@ namespace UnitTest
             calc.CalcValue = "-A*40";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("-A",calc.ParsedValues[0]);
-            Assert.AreEqual("*",calc.ParsedValues[1]);
-            Assert.AreEqual("40",calc.ParsedValues[2]);
+            Assert.AreEqual("-A", calc.ParsedValues[0]);
+            Assert.AreEqual("*", calc.ParsedValues[1]);
+            Assert.AreEqual("40", calc.ParsedValues[2]);
         }
 
         [TestMethod]
@@ -111,9 +111,9 @@ namespace UnitTest
             calc.CalcValue = "A+40";
             calc.SignValidation();
             calc.ParseValues();
-            Assert.AreEqual("A",calc.ParsedValues[0]);
-            Assert.AreEqual("+",calc.ParsedValues[1]);
-            Assert.AreEqual("40",calc.ParsedValues[2]);
+            Assert.AreEqual("A", calc.ParsedValues[0]);
+            Assert.AreEqual("+", calc.ParsedValues[1]);
+            Assert.AreEqual("40", calc.ParsedValues[2]);
         }
 
         [TestMethod]
@@ -175,20 +175,20 @@ namespace UnitTest
             calc.SignValidation();
             calc.ParseValues();
             calc.CalculateValues();
-            Assert.AreEqual("4",calc.OutputCalcValue);
+            Assert.AreEqual("4", calc.OutputCalcValue);
         }
 
         [TestMethod]
         public void TestCalculateValuesHex5()
         {
-           var calc = new Kalkulator.Calc();
-           calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
-           calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
-           calc.CalcValue = "8-B";
-           calc.SignValidation();
-           calc.ParseValues();
-           calc.CalculateValues();
-           Assert.AreEqual("FFFD", calc.OutputCalcValue);
+            var calc = new Kalkulator.Calc();
+            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
+            calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
+            calc.CalcValue = "8-B";
+            calc.SignValidation();
+            calc.ParseValues();
+            calc.CalculateValues();
+            Assert.AreEqual("FFFD", calc.OutputCalcValue);
         }
 
 
@@ -204,8 +204,8 @@ namespace UnitTest
             calc.CalculateValues();
             Assert.AreEqual("34", calc.OutputCalcValue);
         }
-        
-      [TestMethod]
+
+        [TestMethod]
         public void TestCalculateValuesOct2()
         {
             var calc = new Kalkulator.Calc();
@@ -217,8 +217,8 @@ namespace UnitTest
             calc.CalculateValues();
             Assert.AreEqual("7", calc.OutputCalcValue);
         }
-        
-      [TestMethod]
+
+        [TestMethod]
         public void TestCalculateValuesOct3()
         {
             var calc = new Kalkulator.Calc();
@@ -230,8 +230,8 @@ namespace UnitTest
             calc.CalculateValues();
             Assert.AreEqual("250", calc.OutputCalcValue);
         }
-        
-      [TestMethod]
+
+        [TestMethod]
         public void TestCalculateValuesOct4()
         {
             var calc = new Kalkulator.Calc();
