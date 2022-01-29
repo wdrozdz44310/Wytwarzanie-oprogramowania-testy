@@ -52,6 +52,7 @@
     <Compile Include="HexInputTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BinInputTest.cs" />
+    <Compile Include="KalkTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

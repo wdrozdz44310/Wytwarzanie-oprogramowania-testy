@@ -4,6 +4,7 @@
     {
         TypQword,
         TypDword,
-        TypWord
+        TypWord,
+        TypByte
     }
 }
