@@ -140,7 +140,7 @@ namespace Kalkulator
                     CalcValue = CalcValue.ToUpper();
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '9') && !(c >= 'A' && c <= 'F') && (c != '-'))
+                        if (!(c >= '0' && c <= '9') && !(c >= 'A' && c <= 'F') && (c != '-') && (c != '+') && (c != '*') && (c != '/'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -149,7 +149,7 @@ namespace Kalkulator
                 case CalcSystem.SystemDec:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '9') && (c != '-'))
+                        if (!(c >= '0' && c <= '9') && (c != '-') && (c != '+') && (c != '*') && (c != '/'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -159,7 +159,7 @@ namespace Kalkulator
                 case CalcSystem.SystemBin:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '1') && (c != '-'))
+                        if (!(c >= '0' && c <= '1') && (c != '-') && (c != '+') && (c != '*') && (c != '/'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
@@ -169,11 +169,10 @@ namespace Kalkulator
                 case CalcSystem.SystemOct:
                     foreach (char c in CalcValue)
                     {
-                        if (!(c >= '0' && c <= '7') && (c != '-'))
+                        if (!(c >= '0' && c <= '7') && (c != '-') && (c != '+') && (c != '*') && (c != '/'))
                         {
                             CalcValue = CalcValue.Remove(CalcValue.IndexOf(c), 1);
                         }
-
                     }
                     break;
             }
@@ -197,6 +196,15 @@ namespace Kalkulator
             if (CalcSystem != CalcSystem.SystemDec)
                 output = Convert.ToString(Convert.ToInt64(result.ToString(), 10), oldSystem);
             return output;
+        }
+
+        public string ConvertSystem(int oldSystem, int newSystem, string input)
+        {
+            string changedInput = input;
+            if (CalcSystem != CalcSystem.SystemDec)
+                changedInput = Convert.ToString(Convert.ToInt64(input, oldSystem), newSystem);
+
+            return changedInput;
         }
 
         public void ConvertTyp()
