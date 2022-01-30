@@ -53,6 +53,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="BinInputTest.cs" />
     <Compile Include="KalkTest.cs" />
+    <Compile Include="ConvertSystemTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

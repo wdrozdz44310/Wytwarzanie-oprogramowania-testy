@@ -92,8 +92,8 @@ namespace Kalkulator
 
             string input1, input2;
 
-            input1 = ConvertInputSystem(oldSystem, ParsedValues[0]);
-            input2 = ConvertInputSystem(oldSystem, ParsedValues[2]);
+            input1 = ConvertSystem(oldSystem, 10, ParsedValues[0]);
+            input2 = ConvertSystem(oldSystem, 10, ParsedValues[2]);
 
             int result;
             if (ParsedValues[1] == "+")
@@ -107,13 +107,10 @@ namespace Kalkulator
             else
                 result = 0;
 
-            OutputCalcValue = ConvertOutputSystem(oldSystem, result).ToUpper();
+            OutputCalcValue = ConvertSystem(10, oldSystem, result.ToString());
             BinOutput = ConvertSystem(oldSystem, 2, OutputCalcValue);
             ConvertTyp();
         }
-
-        // Convert.ToString(Convert.ToInt64(text, oldType), 2);
-        // Gdzie text to input stringowy
 
         // sprawdza czy wpisany znak działania jest dozwolony   
         public void SignValidation()
@@ -174,26 +171,6 @@ namespace Kalkulator
                     }
                     break;
             }
-
-        }
-
-
-        // pod działania
-        public string ConvertInputSystem(int oldSystem, string input)
-        {
-            string inputDec = input.ToString();
-            if (CalcSystem != CalcSystem.SystemDec)
-                inputDec = Convert.ToString(Convert.ToInt64(input, oldSystem), 10);
-
-            return inputDec;
-        }
-
-        public string ConvertOutputSystem(int oldSystem, int result)
-        {
-            string output = result.ToString();
-            if (CalcSystem != CalcSystem.SystemDec)
-                output = Convert.ToString(Convert.ToInt64(result.ToString(), 10), oldSystem);
-            return output;
         }
 
         public string ConvertSystem(int oldSystem, int newSystem, string input)
@@ -203,7 +180,7 @@ namespace Kalkulator
             if (oldSystem != newSystem)
                 changedInput = Convert.ToString(Convert.ToInt64(input, oldSystem), newSystem);
 
-            return changedInput;
+            return changedInput.ToUpper();
         }
 
         public void ConvertTyp()
