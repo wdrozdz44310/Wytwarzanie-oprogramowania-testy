@@ -236,7 +236,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestCalculateValuesBin()
+        public void TestCalculateValuesBin1()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;

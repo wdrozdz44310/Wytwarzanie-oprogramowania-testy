@@ -7,7 +7,7 @@ namespace UnitTest
     public class TypTests
     {
         [TestMethod]
-        public void BinInputQwordToDword()
+        public void BinOutputQwordToDword()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypDword;
@@ -17,7 +17,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputQwordToWord()
+        public void BinOutputQwordToWord()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
@@ -27,7 +27,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputQwordToByte()
+        public void BinOutputQwordToByte()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypByte;
@@ -37,7 +37,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputDwordToQword()
+        public void BinOutputDwordToQword()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypDword;
@@ -51,7 +51,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputDwordToWord()
+        public void BinOutputDwordToWord()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypDword;
@@ -65,7 +65,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputDwordToByte()
+        public void BinOutputDwordToByte()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypDword;
@@ -79,7 +79,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputWordToQword()
+        public void BinOutputWordToQword()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
@@ -93,7 +93,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputWordToDword()
+        public void BinOutputWordToDword()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
@@ -107,7 +107,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputWordToByte()
+        public void BinOutputWordToByte()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
@@ -121,7 +121,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputByteToQword()
+        public void BinOutputByteToQword()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypByte;
@@ -135,7 +135,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputByteToDword()
+        public void BinOutputByteToDword()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypByte;
@@ -149,7 +149,7 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void BinInputByteToWord()
+        public void BinOutputByteToWord()
         {
             var calc = new Kalkulator.Calc();
             calc.CalcTyp = Kalkulator.CalcTyp.TypByte;

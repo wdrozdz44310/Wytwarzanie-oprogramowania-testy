@@ -33,7 +33,12 @@ namespace Kalkulator
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
                 if(inputTextBox.Text != "")
                 {
-                    newText = calc.ConvertSystem(prevNumberSystem, 2, inputTextBox.Text);
+                    calc.ParseValues();
+                    newText = calc.ConvertSystem(prevNumberSystem, 2, calc.ParsedValues[0]);
+                    if (calc.ParsedValues[1] != "")
+                        newText += calc.ParsedValues[1];
+                    if (calc.ParsedValues[2] != "")
+                        newText += calc.ConvertSystem(prevNumberSystem, 2, calc.ParsedValues[2]);
                     inputTextBox.Text = newText;
                 }
                 
@@ -46,7 +51,12 @@ namespace Kalkulator
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
                 if (inputTextBox.Text != "")
                 {
-                    newText = calc.ConvertSystem(prevNumberSystem, 8, inputTextBox.Text);
+                    calc.ParseValues();
+                    newText = calc.ConvertSystem(prevNumberSystem, 8, calc.ParsedValues[0]);
+                    if (calc.ParsedValues[1] != "")
+                        newText += calc.ParsedValues[1];
+                    if (calc.ParsedValues[2] != "")
+                        newText += calc.ConvertSystem(prevNumberSystem, 8, calc.ParsedValues[2]);
                     inputTextBox.Text = newText;
                 }
                 newText = calc.ConvertSystem(prevNumberSystem, 8, outputTextBox.Text);
@@ -58,7 +68,12 @@ namespace Kalkulator
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemDec;
                 if (inputTextBox.Text != "")
                 {
+                    calc.ParseValues();
                     newText = calc.ConvertSystem(prevNumberSystem, 10, inputTextBox.Text);
+                    if (calc.ParsedValues[1] != "")
+                        newText += calc.ParsedValues[1];
+                    if (calc.ParsedValues[2] != "")
+                        newText += calc.ConvertSystem(prevNumberSystem, 10, calc.ParsedValues[2]);
                     inputTextBox.Text = newText;
                 }
                 newText = calc.ConvertSystem(prevNumberSystem, 10, outputTextBox.Text);
@@ -70,7 +85,13 @@ namespace Kalkulator
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
                 if (inputTextBox.Text != "")
                 {
-                    newText = calc.ConvertSystem(prevNumberSystem, 16, inputTextBox.Text);
+                    calc.ParseValues();
+                    newText = calc.ConvertSystem(prevNumberSystem, 16, calc.ParsedValues[0]);
+                    if(calc.ParsedValues[1] != "")
+                        newText += calc.ParsedValues[1];
+                    if(calc.ParsedValues[2] != "")
+                        newText += calc.ConvertSystem(prevNumberSystem, 16, calc.ParsedValues[2]);
+
                     inputTextBox.Text = newText;
                 }
                 newText = calc.ConvertSystem(prevNumberSystem, 16, outputTextBox.Text);
@@ -85,6 +106,7 @@ namespace Kalkulator
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypByte;
                 calc.ConvertTyp(prevNumberSystem);
+                
             }
             else if (typListBox.SelectedIndex == 1)
             {
