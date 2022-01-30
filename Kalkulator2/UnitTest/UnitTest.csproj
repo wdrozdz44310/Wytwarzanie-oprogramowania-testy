@@ -54,6 +54,7 @@
     <Compile Include="BinInputTest.cs" />
     <Compile Include="KalkTest.cs" />
     <Compile Include="ConvertSystemTest.cs" />
+    <Compile Include="TypTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

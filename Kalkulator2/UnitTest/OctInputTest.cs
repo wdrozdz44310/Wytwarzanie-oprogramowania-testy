@@ -16,8 +16,6 @@ namespace UnitTest
             calc.CalcValue = "1";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
-
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
             Assert.AreEqual(Kalkulator.CalcTyp.TypWord, calc.CalcTyp);
@@ -34,7 +32,7 @@ namespace UnitTest
             calc.CalcValue = "0";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
@@ -52,8 +50,6 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
-
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
             Assert.AreEqual("1", calc.CalcValue);
@@ -69,7 +65,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
             Assert.AreEqual(Kalkulator.CalcTyp.TypWord, calc.CalcTyp);
@@ -86,7 +82,7 @@ namespace UnitTest
             calc.CalcValue = "2";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
@@ -104,7 +100,7 @@ namespace UnitTest
             calc.CalcValue = "3";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
@@ -122,7 +118,7 @@ namespace UnitTest
             calc.CalcValue = "4";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
@@ -140,7 +136,7 @@ namespace UnitTest
             calc.CalcValue = "5";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
@@ -158,7 +154,7 @@ namespace UnitTest
             calc.CalcValue = "6";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
@@ -176,7 +172,7 @@ namespace UnitTest
             calc.CalcValue = "7";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
@@ -193,7 +189,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
             Assert.AreEqual("10213541017", calc.CalcValue);
@@ -208,7 +204,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemOct, calc.CalcSystem);
             Assert.AreEqual("1021354101", calc.CalcValue);

@@ -311,6 +311,7 @@
             this.resetButton.TabIndex = 23;
             this.resetButton.Text = "Clear";
             this.resetButton.UseVisualStyleBackColor = true;
+            this.resetButton.Click += new System.EventHandler(this.resetButton_Click);
             // 
             // divideButton
             // 

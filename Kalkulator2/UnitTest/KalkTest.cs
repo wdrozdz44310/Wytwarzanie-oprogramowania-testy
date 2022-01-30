@@ -117,16 +117,6 @@ namespace UnitTest
         }
 
         [TestMethod]
-        public void TestConvertInput()
-        {
-            var calc = new Kalkulator.Calc();
-            calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
-            calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
-            string result = calc.ConvertInputSystem(16, "B");
-            Assert.AreEqual("11", result);
-        }
-
-        [TestMethod]
         public void TestCalculateValuesHex1()
         {
             var calc = new Kalkulator.Calc();
@@ -188,6 +178,7 @@ namespace UnitTest
             calc.SignValidation();
             calc.ParseValues();
             calc.CalculateValues();
+            calc.ConvertTyp(16);
             Assert.AreEqual("FFFD", calc.OutputCalcValue);
         }
 

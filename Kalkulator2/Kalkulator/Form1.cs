@@ -12,9 +12,9 @@ namespace Kalkulator
             calc = new Kalkulator.Calc();
             prevNumberSystem = 10;
             outputTextBox.Text = "0";
-            binOutputTextBox.Text = calc.BinOutput;
             numberSystemListBox.SelectedIndex = 2;
             typListBox.SelectedIndex = 3;
+            binOutputTextBox.Text = calc.BinOutput;
         }
 
         private void inputTextBox_TextChanged(object sender, System.EventArgs e)
@@ -27,11 +27,16 @@ namespace Kalkulator
 
         private void numberSystemListBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
+            string newText;
             if (numberSystemListBox.SelectedIndex == 0)
             {
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
-                string newText = calc.ConvertSystem(prevNumberSystem, 2, inputTextBox.Text);
-                inputTextBox.Text = newText;
+                if(inputTextBox.Text != "")
+                {
+                    newText = calc.ConvertSystem(prevNumberSystem, 2, inputTextBox.Text);
+                    inputTextBox.Text = newText;
+                }
+                
                 newText = calc.ConvertSystem(prevNumberSystem, 2, outputTextBox.Text);
                 outputTextBox.Text = newText;
                 prevNumberSystem = 2;
@@ -39,8 +44,11 @@ namespace Kalkulator
             else if (numberSystemListBox.SelectedIndex == 1)
             {
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemOct;
-                string newText = calc.ConvertSystem(prevNumberSystem, 8, inputTextBox.Text);
-                inputTextBox.Text = newText;
+                if (inputTextBox.Text != "")
+                {
+                    newText = calc.ConvertSystem(prevNumberSystem, 8, inputTextBox.Text);
+                    inputTextBox.Text = newText;
+                }
                 newText = calc.ConvertSystem(prevNumberSystem, 8, outputTextBox.Text);
                 outputTextBox.Text = newText;
                 prevNumberSystem = 8;
@@ -48,8 +56,11 @@ namespace Kalkulator
             else if (numberSystemListBox.SelectedIndex == 2)
             {
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemDec;
-                string newText = calc.ConvertSystem(prevNumberSystem, 10, inputTextBox.Text);
-                inputTextBox.Text = newText;
+                if (inputTextBox.Text != "")
+                {
+                    newText = calc.ConvertSystem(prevNumberSystem, 10, inputTextBox.Text);
+                    inputTextBox.Text = newText;
+                }
                 newText = calc.ConvertSystem(prevNumberSystem, 10, outputTextBox.Text);
                 outputTextBox.Text = newText;
                 prevNumberSystem = 10;
@@ -57,8 +68,11 @@ namespace Kalkulator
             else
             {
                 calc.CalcSystem = Kalkulator.CalcSystem.SystemHex;
-                string newText = calc.ConvertSystem(prevNumberSystem, 16, inputTextBox.Text);
-                inputTextBox.Text = newText;
+                if (inputTextBox.Text != "")
+                {
+                    newText = calc.ConvertSystem(prevNumberSystem, 16, inputTextBox.Text);
+                    inputTextBox.Text = newText;
+                }
                 newText = calc.ConvertSystem(prevNumberSystem, 16, outputTextBox.Text);
                 outputTextBox.Text = newText;
                 prevNumberSystem = 16;
@@ -67,26 +81,29 @@ namespace Kalkulator
 
         private void typListBox_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            if (numberSystemListBox.SelectedIndex == 0)
+            if (typListBox.SelectedIndex == 0)
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypByte;
-                // przycinanie
+                calc.ConvertTyp(prevNumberSystem);
             }
-            else if (numberSystemListBox.SelectedIndex == 1)
+            else if (typListBox.SelectedIndex == 1)
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
-                // przycinanie
+                calc.ConvertTyp(prevNumberSystem);
             }
-            else if (numberSystemListBox.SelectedIndex == 2)
+            else if (typListBox.SelectedIndex == 2)
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypDword;
-                // przycinanie
+                calc.ConvertTyp(prevNumberSystem);
             }
             else
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypQword;
-                // przycinanie
+                calc.ConvertTyp(prevNumberSystem);
             }
+
+            binOutputTextBox.Text = calc.BinOutput;
+            outputTextBox.Text = calc.OutputCalcValue;
         }
 
         private void Abutton_Click(object sender, System.EventArgs e)
@@ -213,6 +230,16 @@ namespace Kalkulator
 
         private void outputTextBox_TextChanged(object sender, System.EventArgs e)
         {
+            binOutputTextBox.Text = calc.BinOutput;
+        }
+
+        private void resetButton_Click(object sender, System.EventArgs e)
+        {
+            inputTextBox.Text = "";
+            calc.OutputCalcValue = "0";
+            calc.BinOutput = "0";
+            calc.ConvertTyp(prevNumberSystem);
+            outputTextBox.Text = calc.OutputCalcValue;
             binOutputTextBox.Text = calc.BinOutput;
         }
     }

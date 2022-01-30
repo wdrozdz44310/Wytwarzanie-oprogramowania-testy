@@ -109,7 +109,7 @@ namespace Kalkulator
 
             OutputCalcValue = ConvertSystem(10, oldSystem, result.ToString());
             BinOutput = ConvertSystem(oldSystem, 2, OutputCalcValue);
-            ConvertTyp();
+            ConvertTyp(oldSystem);
         }
 
         // sprawdza czy wpisany znak działania jest dozwolony   
@@ -183,25 +183,84 @@ namespace Kalkulator
             return changedInput.ToUpper();
         }
 
-        public void ConvertTyp()
+        public void ConvertTyp(int system)
         {
             switch (CalcTyp)
             {
                 case CalcTyp.TypQword:
                     // OutputCalcValue = OutputCalcValue.PadLeft(64);
+                    if (BinOutput.Length > 64)
+                    {
+                        while (BinOutput.Length > 64)
+                            BinOutput = BinOutput.Remove(0, 1);
+
+                        OutputCalcValue = ConvertSystem(2, system, BinOutput);
+                    }
+                    else
+                    {
+                        int zeros = 64 - BinOutput.Length;
+                        string tmp = "";
+                        for (int i = 0; i < zeros; i++)
+                            tmp += "0";
+                        BinOutput = tmp + BinOutput;
+                    }
                     break;
                 case CalcTyp.TypDword:
                     // OutputCalcValue = OutputCalcValue.PadLeft(32);
+                    if (BinOutput.Length > 32)
+                    {
+                        while (BinOutput.Length > 32)
+                            BinOutput = BinOutput.Remove(0, 1);
+
+                        OutputCalcValue = ConvertSystem(2, system, BinOutput);
+                    }
+                    else
+                    {
+                        int zeros = 32 - BinOutput.Length;
+                        string tmp = "";
+                        for (int i = 0; i < zeros; i++)
+                            tmp += "0";
+                        BinOutput = tmp + BinOutput;
+                    }
                     break;
                 case CalcTyp.TypWord:
                     // OutputCalcValue = OutputCalcValue.PadLeft(16);
+                    if (BinOutput.Length > 16)
+                    {
+                        while (BinOutput.Length > 16)
+                            BinOutput = BinOutput.Remove(0, 1);
+
+                        OutputCalcValue = ConvertSystem(2, system, BinOutput);
+                    }
+                    else
+                    {
+                        int zeros = 16 - BinOutput.Length;
+                        string tmp = "";
+                        for (int i = 0; i < zeros; i++)
+                            tmp += "0";
+                        BinOutput = tmp + BinOutput;
+                    }
                     break;
                 case CalcTyp.TypByte:
                     // OutputCalcValue = OutputCalcValue.PadLeft(8);
+                    if (BinOutput.Length > 8)
+                    {
+                        while (BinOutput.Length > 8)
+                            BinOutput = BinOutput.Remove(0, 1);
+
+                        OutputCalcValue = ConvertSystem(2, system, BinOutput);
+                    }
+                    else
+                    {
+                        int zeros = 8 - BinOutput.Length;
+                        string tmp = "";
+                        for (int i = 0; i < zeros; i++)
+                            tmp += "0";
+                        BinOutput = tmp + BinOutput;
+                    }
                     break;
                 default:
                     break;
-
             }
         }
     }

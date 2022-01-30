@@ -16,7 +16,7 @@ namespace UnitTest
             calc.CalcValue = "1";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
@@ -34,7 +34,7 @@ namespace UnitTest
             calc.CalcValue = "0";
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
@@ -52,7 +52,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
@@ -69,7 +69,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
@@ -85,7 +85,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
@@ -101,7 +101,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
             Assert.AreEqual("101101", calc.CalcValue);
@@ -116,7 +116,7 @@ namespace UnitTest
             calc.CalcSystem = Kalkulator.CalcSystem.SystemBin;
             calc.SignValidation();
             calc.CheckChars();
-            calc.ConvertTyp();
+            
 
             Assert.AreEqual(Kalkulator.CalcSystem.SystemBin, calc.CalcSystem);
             Assert.AreEqual("101101", calc.CalcValue);
