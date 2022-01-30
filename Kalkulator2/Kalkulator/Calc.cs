@@ -50,12 +50,9 @@ namespace Kalkulator
                 BinOutput += "0";
         }
 
-
-
         // dzeli wyrażenie np. 2+4 na "2" "+" "4"
         public void ParseValues()
         {
-
             parsedValues[0] = "";
             parsedValues[1] = "";
             parsedValues[2] = "";
@@ -111,6 +108,7 @@ namespace Kalkulator
                 result = 0;
 
             OutputCalcValue = ConvertOutputSystem(oldSystem, result).ToUpper();
+            BinOutput = ConvertSystem(oldSystem, 2, OutputCalcValue);
             ConvertTyp();
         }
 
@@ -201,7 +199,8 @@ namespace Kalkulator
         public string ConvertSystem(int oldSystem, int newSystem, string input)
         {
             string changedInput = input;
-            if (CalcSystem != CalcSystem.SystemDec)
+
+            if (oldSystem != newSystem)
                 changedInput = Convert.ToString(Convert.ToInt64(input, oldSystem), newSystem);
 
             return changedInput;

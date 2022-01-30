@@ -10,11 +10,11 @@ namespace Kalkulator
         {
             InitializeComponent();
             calc = new Kalkulator.Calc();
+            prevNumberSystem = 10;
             outputTextBox.Text = "0";
             binOutputTextBox.Text = calc.BinOutput;
             numberSystemListBox.SelectedIndex = 2;
             typListBox.SelectedIndex = 3;
-            prevNumberSystem = 10;
         }
 
         private void inputTextBox_TextChanged(object sender, System.EventArgs e)
@@ -213,9 +213,7 @@ namespace Kalkulator
 
         private void outputTextBox_TextChanged(object sender, System.EventArgs e)
         {
-            // przelicz output na binarkę
-            // jeśli za mało bitów, dopełnij z lewej zerami
-            // jeśli za dużo bitów, utnij bity z lewej i zmień output
+            binOutputTextBox.Text = calc.BinOutput;
         }
     }
 }
