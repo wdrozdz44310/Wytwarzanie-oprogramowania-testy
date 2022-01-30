@@ -58,10 +58,14 @@ namespace Kalkulator
             parsedValues[2] = "";
 
             int signIndex = 0;
+
             for (int i = 0; (i == 0 && CalcValue[i] == '-') || (CalcValue[i] != '+' && CalcValue[i] != '-' && CalcValue[i] != '*' && CalcValue[i] != '/'); i++)
             {
                 parsedValues[0] += CalcValue[i];
                 signIndex++;
+
+                if (i == CalcValue.Length - 1)
+                    break;
             }
 
             if (signIndex == CalcValue.Length)
@@ -125,7 +129,7 @@ namespace Kalkulator
                 CalcValue.StartsWith("(") ||
                 CalcValue.StartsWith(")"))
             {
-                CalcValue = CalcValue.Remove(0, 1); ;
+                CalcValue = CalcValue.Remove(0, 1);
             }
         }
 
@@ -188,6 +192,10 @@ namespace Kalkulator
 
         public void ConvertTyp(int system)
         {
+            int zeros = 0;
+            string tmp = "";
+            string sign;
+            int typ = 64;
             switch (CalcTyp)
             {
                 case CalcTyp.TypQword:
@@ -196,122 +204,68 @@ namespace Kalkulator
                         while (BinOutput.Length > 64)
                             BinOutput = BinOutput.Remove(0, 1);
                     }
-                    else
-                    {
-                        int zeros = 64 - BinOutput.Length;
-                        string tmp = "";
-                        string sign;
-
-                        if (BinOutput.Length == 64 && BinOutput[0] == '1')
-                            sign = "1";
-                        else
-                        {
-                            sign = "0";
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                        }
-
-                        for (int i = 0; i < zeros; i++)
-                            tmp += sign;
-
-                        BinOutput = tmp + BinOutput;
-
-                        if (sign == "1")
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                    }
-                    OutputCalcValue = ConvertSystem(2, system, BinOutput);
+                    zeros = 64 - BinOutput.Length;
+                    typ = 64;
                     break;
+
                 case CalcTyp.TypDword:
                     if (BinOutput.Length > 32)
                     {
                         while (BinOutput.Length > 32)
                             BinOutput = BinOutput.Remove(0, 1);
                     }
-                    else
-                    {
-                        int zeros = 32 - BinOutput.Length;
-                        string tmp = "";
-                        string sign;
-
-                        if (BinOutput.Length == 32 && BinOutput[0] == '1')
-                            sign = "1";
-                        else
-                        {
-                            sign = "0";
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                        }
-
-                        for (int i = 0; i < zeros; i++)
-                            tmp += sign;
-
-                        BinOutput = tmp + BinOutput;
-
-                        if (sign == "1")
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                    }
+                    zeros = 32 - BinOutput.Length;
+                    typ = 32;
                     break;
+
                 case CalcTyp.TypWord:
                     if (BinOutput.Length > 16)
                     {
                         while (BinOutput.Length > 16)
                             BinOutput = BinOutput.Remove(0, 1);
                     }
-                    else
-                    {
-                        int zeros = 16 - BinOutput.Length;
-                        string tmp = "";
-                        string sign;
-
-                        if (BinOutput.Length == 16 && BinOutput[0] == '1')
-                            sign = "1";
-                        else
-                        {
-                            sign = "0";
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                        }
-
-                        for (int i = 0; i < zeros; i++)
-                            tmp += sign;
-
-                        BinOutput = tmp + BinOutput;
-
-                        if (sign == "1")
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                    }
+                    zeros = 16 - BinOutput.Length;
+                    typ = 16;
                     break;
+
                 case CalcTyp.TypByte:
                     if (BinOutput.Length > 8)
                     {
                         while (BinOutput.Length > 8)
                             BinOutput = BinOutput.Remove(0, 1);
                     }
-                    else
-                    {
-                        int zeros = 8 - BinOutput.Length;
-                        string tmp = "";
-                        string sign;
-
-                        if (BinOutput.Length == 8 && BinOutput[0] == '1')
-                            sign = "1";
-                        else
-                        {
-                            sign = "0";
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                        }
-
-                            for (int i = 0; i < zeros; i++)
-                            tmp += sign;
-
-                        BinOutput = tmp + BinOutput;
-
-                        if(sign == "1")
-                            OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                    }
+                    zeros = 8 - BinOutput.Length;
+                    typ = 8;
                     break;
+
                 default:
                     break;
             }
-            
+
+            tmp = "";
+
+            if (BinOutput.Length == typ && BinOutput[0] == '1')
+                sign = "1";
+            else
+            {
+                sign = "0";
+                OutputCalcValue = ConvertSystem(2, system, BinOutput);
+                while(OutputCalcValue.Length > 1)
+                {
+                    if (OutputCalcValue[0] == '0')
+                        OutputCalcValue = OutputCalcValue.Remove(0, 1);
+                    else
+                        break;
+                }
+            }
+
+            for (int i = 0; i < zeros; i++)
+                tmp += sign;
+
+            BinOutput = tmp + BinOutput;
+
+            if (sign == "1")
+                OutputCalcValue = ConvertSystem(2, system, BinOutput);
         }
     }
-
 }

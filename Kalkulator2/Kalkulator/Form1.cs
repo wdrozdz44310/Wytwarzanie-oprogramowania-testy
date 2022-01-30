@@ -69,7 +69,7 @@ namespace Kalkulator
                 if (inputTextBox.Text != "")
                 {
                     calc.ParseValues();
-                    newText = calc.ConvertSystem(prevNumberSystem, 10, inputTextBox.Text);
+                    newText = calc.ConvertSystem(prevNumberSystem, 10, calc.ParsedValues[0]);
                     if (calc.ParsedValues[1] != "")
                         newText += calc.ParsedValues[1];
                     if (calc.ParsedValues[2] != "")
@@ -260,8 +260,8 @@ namespace Kalkulator
             inputTextBox.Text = "";
             calc.OutputCalcValue = "0";
             calc.BinOutput = "0";
-            calc.ConvertTyp(prevNumberSystem);
             outputTextBox.Text = calc.OutputCalcValue;
+            calc.ConvertTyp(prevNumberSystem);
             binOutputTextBox.Text = calc.BinOutput;
         }
     }
