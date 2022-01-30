@@ -2,7 +2,6 @@
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Text;
 
 namespace Kalkulator
 {
@@ -82,7 +81,7 @@ namespace Kalkulator
         }
 
         // oblicza dla =,-,*,/
-        public void CalculateValues()
+        public void CalculateValues(int typ)
         {
             if (ParsedValues[1] == "")
                 outputCalcValue = ParsedValues[0].ToString();
@@ -116,7 +115,7 @@ namespace Kalkulator
 
             OutputCalcValue = ConvertSystem(10, oldSystem, result.ToString());
             BinOutput = ConvertSystem(oldSystem, 2, OutputCalcValue);
-            ConvertTyp(oldSystem);
+            ConvertTyp(oldSystem, typ);
         }
 
         // sprawdza czy wpisany znak działania jest dozwolony   
@@ -185,12 +184,29 @@ namespace Kalkulator
             string changedInput = input;
 
             if (oldSystem != newSystem)
-                changedInput = Convert.ToString(Convert.ToInt64(input, oldSystem), newSystem);
+            {
+                switch(CalcTyp)
+                {
+                    case CalcTyp.TypByte:
+                        changedInput = Convert.ToString(Convert.ToSByte(input, oldSystem), newSystem);
+                        break;
+                    case CalcTyp.TypWord:
+                        changedInput = Convert.ToString(Convert.ToInt16(input, oldSystem), newSystem);
+                        break;
+                    case CalcTyp.TypDword:
+                        changedInput = Convert.ToString(Convert.ToInt32(input, oldSystem), newSystem);
+                        break;
+                    case CalcTyp.TypQword:
+                        changedInput = Convert.ToString(Convert.ToInt64(input, oldSystem), newSystem);
+                        break;
+                }
+            }
+                
 
             return changedInput.ToUpper();
         }
 
-        public void ConvertTyp(int system)
+        public void ConvertTyp(int system, int prevTyp)
         {
             int zeros = 0;
             string tmp = "";
@@ -244,13 +260,13 @@ namespace Kalkulator
 
             tmp = "";
 
-            if (BinOutput.Length == typ && BinOutput[0] == '1')
+            if ((BinOutput.Length == prevTyp && BinOutput[0] == '1'))
                 sign = "1";
             else
             {
                 sign = "0";
                 OutputCalcValue = ConvertSystem(2, system, BinOutput);
-                while(OutputCalcValue.Length > 1)
+                while (OutputCalcValue.Length > 1)
                 {
                     if (OutputCalcValue[0] == '0')
                         OutputCalcValue = OutputCalcValue.Remove(0, 1);

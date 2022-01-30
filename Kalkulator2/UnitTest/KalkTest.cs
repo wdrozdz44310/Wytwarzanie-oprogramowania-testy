@@ -125,7 +125,7 @@ namespace UnitTest
             calc.CalcValue = "8+B";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("13", calc.OutputCalcValue);
         }
 
@@ -138,7 +138,7 @@ namespace UnitTest
             calc.CalcValue = "B-8";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("3", calc.OutputCalcValue);
         }
 
@@ -151,7 +151,7 @@ namespace UnitTest
             calc.CalcValue = "8*B";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("58", calc.OutputCalcValue);
         }
 
@@ -164,7 +164,7 @@ namespace UnitTest
             calc.CalcValue = "B4/2D";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("4", calc.OutputCalcValue);
         }
 
@@ -177,8 +177,8 @@ namespace UnitTest
             calc.CalcValue = "8-B";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
-            calc.ConvertTyp(16);
+            calc.CalculateValues(16);
+            calc.ConvertTyp(16, 16);
             Assert.AreEqual("FFFD", calc.OutputCalcValue);
         }
 
@@ -192,7 +192,7 @@ namespace UnitTest
             calc.CalcValue = "7+25";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("34", calc.OutputCalcValue);
         }
 
@@ -205,7 +205,7 @@ namespace UnitTest
             calc.CalcValue = "75-66";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("7", calc.OutputCalcValue);
         }
 
@@ -218,7 +218,7 @@ namespace UnitTest
             calc.CalcValue = "52*4";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("250", calc.OutputCalcValue);
         }
 
@@ -231,7 +231,7 @@ namespace UnitTest
             calc.CalcValue = "314/6";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("42", calc.OutputCalcValue);
         }
 
@@ -244,7 +244,7 @@ namespace UnitTest
             calc.CalcValue = "1001+1101";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("10110", calc.OutputCalcValue);
         }
 
@@ -257,7 +257,7 @@ namespace UnitTest
             calc.CalcValue = "1111011-101";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("1110110", calc.OutputCalcValue);
         }
 
@@ -270,7 +270,7 @@ namespace UnitTest
             calc.CalcValue = "101*11";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("1111", calc.OutputCalcValue);
         }
 
@@ -283,7 +283,7 @@ namespace UnitTest
             calc.CalcValue = "111010/11";
             calc.SignValidation();
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(16);
             Assert.AreEqual("10011", calc.OutputCalcValue);
         }
 

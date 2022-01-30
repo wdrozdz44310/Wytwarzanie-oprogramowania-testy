@@ -5,12 +5,13 @@ namespace Kalkulator
     public partial class Form1 : Form
     {
         Kalkulator.Calc calc;
-        int prevNumberSystem;
+        int prevNumberSystem, prevTyp;
         public Form1()
         {
             InitializeComponent();
             calc = new Kalkulator.Calc();
             prevNumberSystem = 10;
+            prevTyp = 64;
             outputTextBox.Text = "0";
             numberSystemListBox.SelectedIndex = 2;
             typListBox.SelectedIndex = 3;
@@ -105,23 +106,26 @@ namespace Kalkulator
             if (typListBox.SelectedIndex == 0)
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypByte;
-                calc.ConvertTyp(prevNumberSystem);
-                
+                calc.ConvertTyp(prevNumberSystem, prevTyp);
+                prevTyp = 8;
             }
             else if (typListBox.SelectedIndex == 1)
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypWord;
-                calc.ConvertTyp(prevNumberSystem);
+                calc.ConvertTyp(prevNumberSystem, prevTyp);
+                prevTyp = 16;
             }
             else if (typListBox.SelectedIndex == 2)
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypDword;
-                calc.ConvertTyp(prevNumberSystem);
+                calc.ConvertTyp(prevNumberSystem, prevTyp);
+                prevTyp = 32;
             }
             else
             {
                 calc.CalcTyp = Kalkulator.CalcTyp.TypQword;
-                calc.ConvertTyp(prevNumberSystem);
+                calc.ConvertTyp(prevNumberSystem, prevTyp);
+                prevTyp = 64;
             }
 
             binOutputTextBox.Text = calc.BinOutput;
@@ -246,7 +250,7 @@ namespace Kalkulator
         private void calculateButton_Click(object sender, System.EventArgs e)
         {
             calc.ParseValues();
-            calc.CalculateValues();
+            calc.CalculateValues(prevTyp);
             outputTextBox.Text = calc.OutputCalcValue;
         }
 
@@ -261,7 +265,7 @@ namespace Kalkulator
             calc.OutputCalcValue = "0";
             calc.BinOutput = "0";
             outputTextBox.Text = calc.OutputCalcValue;
-            calc.ConvertTyp(prevNumberSystem);
+            calc.ConvertTyp(prevNumberSystem, prevTyp);
             binOutputTextBox.Text = calc.BinOutput;
         }
     }
